@@ -7,6 +7,7 @@ var imageSource = "";
 var titleTextElement = document.querySelector(".poster-title");
 var quoteTextElement = document.querySelector(".poster-quote");
 var imageElement = document.querySelector(".poster-img");
+var showRandomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
