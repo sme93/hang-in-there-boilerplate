@@ -111,6 +111,8 @@ var currentPoster;
 
 // event listeners go here 👇
 
+showRandomButton.addEventListener('click', buildRandomPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
