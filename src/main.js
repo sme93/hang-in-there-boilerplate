@@ -120,6 +120,21 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function buildRandomPoster() {
+  var randomTitleIndex = getRandomIndex(titles);
+  titleText = titles[randomTitleIndex];
+  titleTextElement.innerHTML = titleText;
+
+  var randomQuoteText = getRandomIndex(quotes);
+  quoteText = quotes[randomQuoteText];
+  quoteTextElement.innerHTML = quoteText;
+
+  var randomImageIndex = getRandomIndex(images);
+  imageSource = images[randomImageIndex];
+  imageElement.src = imageSource;
+};
+
+
 var randomTitleIndex = getRandomIndex(titles);
 titleText = titles[randomTitleIndex];
 titleTextElement.innerHTML = titleText;
