@@ -14,7 +14,7 @@ var nevermindButton = document.querySelector(".show-main");
 var savedPostersButton = document.querySelector(".show-saved");
 var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
-
+var showRandomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -126,10 +126,36 @@ savedPostersButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 
 backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 
+showRandomButton.addEventListener('click', buildRandomPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function buildRandomPoster() {
+  var randomTitleIndex = getRandomIndex(titles);
+  titleText = titles[randomTitleIndex];
+  titleTextElement.innerHTML = titleText;
+
+  var randomQuoteText = getRandomIndex(quotes);
+  quoteText = quotes[randomQuoteText];
+  quoteTextElement.innerHTML = quoteText;
+
+  var randomImageIndex = getRandomIndex(images);
+  imageSource = images[randomImageIndex];
+  imageElement.src = imageSource;
+};
+
+function toggleMainPosterAndPosterForm() {
+  mainPosterElement.classList.toggle("hidden");
+  posterFormElement.classList.toggle("hidden");
+}
+
+function toggleMainPosterAndSavedPosters() {
+  mainPosterElement.classList.toggle("hidden");
+  savedPostersElement.classList.toggle("hidden");
 }
 
 var randomTitleIndex = getRandomIndex(titles);
@@ -144,12 +170,3 @@ var randomImageIndex = getRandomIndex(images);
 imageSource = images[randomImageIndex];
 imageElement.src = imageSource;
 
-function toggleMainPosterAndPosterForm() {
-  mainPosterElement.classList.toggle("hidden");
-  posterFormElement.classList.toggle("hidden");
-}
-
-function toggleMainPosterAndSavedPosters() {
-  mainPosterElement.classList.toggle("hidden");
-  savedPostersElement.classList.toggle("hidden");
-}
