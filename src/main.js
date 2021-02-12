@@ -10,7 +10,7 @@ var imageElement = document.querySelector(".poster-img");
 var makeYourOwnPosterButton = document.querySelector(".show-form");
 var mainPosterElement = document.querySelector(".main-poster");
 var posterFormElement = document.querySelector(".poster-form");
-
+var nevermindButton = document.querySelector(".show-main");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,9 +114,9 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-makeYourOwnPosterButton.addEventListener("click", makeYourOwnPosterButtonHandler);
+makeYourOwnPosterButton.addEventListener("click", toggleMainPosterAndPosterForm);
 
-
+nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -136,7 +136,7 @@ var randomImageIndex = getRandomIndex(images);
 imageSource = images[randomImageIndex];
 imageElement.src = imageSource;
 
-function makeYourOwnPosterButtonHandler() {
+function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
 }
