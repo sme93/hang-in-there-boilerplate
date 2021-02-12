@@ -11,6 +11,10 @@ var makeYourOwnPosterButton = document.querySelector(".show-form");
 var mainPosterElement = document.querySelector(".main-poster");
 var posterFormElement = document.querySelector(".poster-form");
 var nevermindButton = document.querySelector(".show-main");
+var savedPostersButton = document.querySelector(".show-saved");
+var savedPostersElement = document.querySelector(".saved-posters");
+var backToMainFromSavedButton = document.querySelector(".back-to-main");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -118,6 +122,10 @@ makeYourOwnPosterButton.addEventListener("click", toggleMainPosterAndPosterForm)
 
 nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
 
+savedPostersButton.addEventListener("click", toggleMainPosterAndSavedPosters);
+
+backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPosters);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -139,4 +147,9 @@ imageElement.src = imageSource;
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
+}
+
+function toggleMainPosterAndSavedPosters() {
+  mainPosterElement.classList.toggle("hidden");
+  savedPostersElement.classList.toggle("hidden");
 }
