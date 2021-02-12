@@ -7,6 +7,10 @@ var imageSource = "";
 var titleTextElement = document.querySelector(".poster-title");
 var quoteTextElement = document.querySelector(".poster-quote");
 var imageElement = document.querySelector(".poster-img");
+var makeYourOwnPosterButton = document.querySelector(".show-form");
+var mainPosterElement = document.querySelector(".main-poster");
+var posterFormElement = document.querySelector(".poster-form");
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -110,6 +114,9 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+makeYourOwnPosterButton.addEventListener("click", makeYourOwnPosterButtonHandler);
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -128,3 +135,8 @@ quoteTextElement.innerHTML = quoteText;
 var randomImageIndex = getRandomIndex(images);
 imageSource = images[randomImageIndex];
 imageElement.src = imageSource;
+
+function makeYourOwnPosterButtonHandler() {
+  mainPosterElement.classList.toggle("hidden");
+  posterFormElement.classList.toggle("hidden");
+}
