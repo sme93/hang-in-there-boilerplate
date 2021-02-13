@@ -166,12 +166,13 @@ function toggleMainPosterAndPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
+
   var markup = `
-<article>
+    <div class="mini-poster">
       <img src=${savedPosters[0].image} alt="nothin' to see here">
-      <h1>${savedPosters[0].title}</h1>
-      <h3>${savedPosters[0].quote}</h3>
-    </article>
+      <h2>${savedPosters[0].title}</h2>
+      <h4>${savedPosters[0].quote}</h4>
+    </div>
 `;
 
   savedPostersGrid.innerHTML = markup;   
