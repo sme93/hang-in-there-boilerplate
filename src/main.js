@@ -168,8 +168,9 @@ function toggleMainPosterAndSavedPosters() {
 }
 
 function saveThisPoster() {
-  savedPosters.push(currentPoster);
-  console.log(savedPosters);
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+  }
 }
 
 buildRandomPoster(); 
