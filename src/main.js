@@ -15,6 +15,7 @@ var savedPostersButton = document.querySelector(".show-saved");
 var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
+var saveThisPosterButton = document.querySelector(".save-poster");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -128,6 +129,8 @@ backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPost
 
 showRandomButton.addEventListener('click', buildRandomPoster);
 
+saveThisPosterButton.addEventListener("click", saveThisPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -154,7 +157,6 @@ function buildRandomPoster() {
   }
 };
 
-
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
@@ -163,6 +165,11 @@ function toggleMainPosterAndPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
+}
+
+function saveThisPoster() {
+  savedPosters.push(currentPoster);
+  console.log(savedPosters);
 }
 
 buildRandomPoster(); 
