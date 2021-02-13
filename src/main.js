@@ -146,7 +146,14 @@ function buildRandomPoster() {
   var randomImageIndex = getRandomIndex(images);
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
+
+  currentPoster = {
+    title: titleText,
+    quote: quoteText,
+    image: imageSource,
+  }
 };
+
 
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
@@ -158,15 +165,4 @@ function toggleMainPosterAndSavedPosters() {
   savedPostersElement.classList.toggle("hidden");
 }
 
-var randomTitleIndex = getRandomIndex(titles);
-titleText = titles[randomTitleIndex];
-titleTextElement.innerHTML = titleText;
-
-var randomQuoteText = getRandomIndex(quotes);
-quoteText = quotes[randomQuoteText];
-quoteTextElement.innerHTML = quoteText;
-
-var randomImageIndex = getRandomIndex(images);
-imageSource = images[randomImageIndex];
-imageElement.src = imageSource;
-
+buildRandomPoster(); 
