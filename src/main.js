@@ -16,6 +16,7 @@ var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
 var saveThisPosterButton = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -165,12 +166,25 @@ function toggleMainPosterAndPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
+  var markup = `
+<article>
+      <img src=${savedPosters[0].image} alt="nothin' to see here">
+      <h1>${savedPosters[0].title}</h1>
+      <h3>${savedPosters[0].quote}</h3>
+    </article>
+`;
+
+  savedPostersGrid.innerHTML = markup;   
 }
 
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
+    console.log(savedPosters);
   }
 }
 
 buildRandomPoster(); 
+
+
+
