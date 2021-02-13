@@ -15,6 +15,7 @@ var savedPostersButton = document.querySelector(".show-saved");
 var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
+var customImageURL = document.querySelector('.poster-img-url');
 
 // we've provided you with some data to work with 👇
 var images = [
