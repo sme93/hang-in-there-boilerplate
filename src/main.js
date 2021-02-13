@@ -166,16 +166,18 @@ function toggleMainPosterAndPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
-
-  var markup = `
-    <div class="mini-poster">
-      <img src=${savedPosters[0].image} alt="nothin' to see here">
-      <h2>${savedPosters[0].title}</h2>
-      <h4>${savedPosters[0].quote}</h4>
-    </div>
-`;
-
-  savedPostersGrid.innerHTML = markup;   
+  
+  var markup = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    markup += `
+     <div class="mini-poster">
+       <img src=${savedPosters[i].image} alt="nothin' to see here">
+       <h2>${savedPosters[i].title}</h2>
+       <h4>${savedPosters[i].quote}</h4>
+     </div>
+    `;
+  }  
+  savedPostersGrid.innerHTML = markup;
 }
 
 function saveThisPoster() {
