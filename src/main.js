@@ -7,6 +7,13 @@ var imageSource = "";
 var titleTextElement = document.querySelector(".poster-title");
 var quoteTextElement = document.querySelector(".poster-quote");
 var imageElement = document.querySelector(".poster-img");
+var makeYourOwnPosterButton = document.querySelector(".show-form");
+var mainPosterElement = document.querySelector(".main-poster");
+var posterFormElement = document.querySelector(".poster-form");
+var nevermindButton = document.querySelector(".show-main");
+var savedPostersButton = document.querySelector(".show-saved");
+var savedPostersElement = document.querySelector(".saved-posters");
+var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
@@ -111,6 +118,13 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+makeYourOwnPosterButton.addEventListener("click", toggleMainPosterAndPosterForm);
+
+nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
+
+savedPostersButton.addEventListener("click", toggleMainPosterAndSavedPosters);
+
+backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 
 showRandomButton.addEventListener('click', buildRandomPoster);
 
@@ -134,6 +148,15 @@ function buildRandomPoster() {
   imageElement.src = imageSource;
 };
 
+function toggleMainPosterAndPosterForm() {
+  mainPosterElement.classList.toggle("hidden");
+  posterFormElement.classList.toggle("hidden");
+}
+
+function toggleMainPosterAndSavedPosters() {
+  mainPosterElement.classList.toggle("hidden");
+  savedPostersElement.classList.toggle("hidden");
+}
 
 var randomTitleIndex = getRandomIndex(titles);
 titleText = titles[randomTitleIndex];
@@ -146,3 +169,4 @@ quoteTextElement.innerHTML = quoteText;
 var randomImageIndex = getRandomIndex(images);
 imageSource = images[randomImageIndex];
 imageElement.src = imageSource;
+
