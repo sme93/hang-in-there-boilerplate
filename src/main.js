@@ -15,6 +15,8 @@ var savedPostersButton = document.querySelector(".show-saved");
 var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
+var saveThisPosterButton = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -128,6 +130,8 @@ backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPost
 
 showRandomButton.addEventListener('click', buildRandomPoster);
 
+saveThisPosterButton.addEventListener("click", saveThisPoster);
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -146,6 +150,12 @@ function buildRandomPoster() {
   var randomImageIndex = getRandomIndex(images);
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
+
+  currentPoster = {
+    title: titleText,
+    quote: quoteText,
+    image: imageSource,
+  }
 };
 
 function toggleMainPosterAndPosterForm() {
@@ -156,17 +166,28 @@ function toggleMainPosterAndPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
+  
+  var markup = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    markup += `
+     <div class="mini-poster">
+       <img src=${savedPosters[i].image} alt="nothin' to see here">
+       <h2>${savedPosters[i].title}</h2>
+       <h4>${savedPosters[i].quote}</h4>
+     </div>
+    `;
+  }  
+  savedPostersGrid.innerHTML = markup;
 }
 
-var randomTitleIndex = getRandomIndex(titles);
-titleText = titles[randomTitleIndex];
-titleTextElement.innerHTML = titleText;
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters);
+  }
+}
 
-var randomQuoteText = getRandomIndex(quotes);
-quoteText = quotes[randomQuoteText];
-quoteTextElement.innerHTML = quoteText;
+buildRandomPoster(); 
 
-var randomImageIndex = getRandomIndex(images);
-imageSource = images[randomImageIndex];
-imageElement.src = imageSource;
+
 
