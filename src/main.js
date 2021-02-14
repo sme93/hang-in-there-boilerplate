@@ -163,7 +163,12 @@ function toggleMainPosterAndPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
-  writeMiniPosters() 
+  writeMiniPosters();
+  createListenersForMiniPosters();
+}
+
+function deletePoster() {
+  console.log("hello world");
 }
 
 function writeMiniPosters() {
@@ -179,6 +184,11 @@ function writeMiniPosters() {
   }
   savedPostersGrid.innerHTML = markup; 
 }  
+
+function createListenersForMiniPosters() {
+  var miniPosterElement = document.querySelector(".mini-poster");
+  miniPosterElement.addEventListener("click", deletePoster);
+}
  
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
