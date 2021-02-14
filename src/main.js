@@ -17,6 +17,8 @@ var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
 var customImageURL = document.querySelector('.poster-img-url');
 var showCustomPoster = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -134,7 +136,7 @@ showRandomButton.addEventListener('click', buildRandomPoster);
 
 showCustomPoster.addEventListener('click', buildCustomPoster);
 
-
+saveThisPosterButton.addEventListener("click", saveThisPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -154,7 +156,8 @@ function buildRandomPoster() {
   var randomImageIndex = getRandomIndex(images);
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
-};
+
+  currentPoster = new Poster(imageSource, titleText, quoteText);
 
 function buildCustomPoster() {
   var customTitle = document.getElementById('poster-image-URL').value;
@@ -178,4 +181,24 @@ function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
 };
+  
+  var markup = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    markup += `
+     <div class="mini-poster">
+       <img src=${savedPosters[i].image} alt="nothin' to see here">
+       <h2>${savedPosters[i].title}</h2>
+       <h4>${savedPosters[i].quote}</h4>
+     </div>
+    `;
+  }  
+  savedPostersGrid.innerHTML = markup;
+}
+
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters);
+  }
+}
 
