@@ -174,7 +174,7 @@ function deletePoster(event) {
 
   var miniPosterId = event.target.dataset.posterId;
   var location = savedPosters.findIndex(findPosterbyId);
-  
+
   savedPosters.splice(location, 1);
   writeMiniPosters();
   createListenersForMiniPosters();
@@ -182,6 +182,7 @@ function deletePoster(event) {
 
 function writeMiniPosters() {
   var markup = "";
+  
   for (var i = 0; i < savedPosters.length; i++) {
     markup += `
      <div class="mini-poster" data-poster-id=${savedPosters[i].id}>
@@ -191,18 +192,21 @@ function writeMiniPosters() {
      </div>
     `;
   }
+
   savedPostersGrid.innerHTML = markup;
 }  
 
 function createListenersForMiniPosters() {
-  var miniPosterElement = document.querySelector(".mini-poster");
-  miniPosterElement.addEventListener("dblclick", deletePoster);
+  var miniPosterElements = document.querySelectorAll(".mini-poster")
+  
+  for (var miniposter of miniPosterElements) {
+    miniposter.addEventListener("dblclick", deletePoster)
+  }
 }
  
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-    console.log(savedPosters);
   }
 }
 
