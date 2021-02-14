@@ -20,6 +20,10 @@ var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var customImageURL = document.querySelector('.poster-img-url');
 var showCustomPoster = document.querySelector('.make-poster');
+
+var userQuote = document.querySelector("poster-quote");
+var userTitle = document.querySelector("#poster-title");
+var userImage = document.querySelector("#poster-image-URL");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
