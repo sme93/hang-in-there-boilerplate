@@ -1,5 +1,6 @@
 // query selector variables go here 👇
 
+
 var titleText = "";
 var quoteText = "";
 var imageSource = "";
@@ -15,9 +16,10 @@ var savedPostersButton = document.querySelector(".show-saved");
 var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
+var saveThisPosterButton = document.querySelector(".save-poster");
+var savedPostersGrid = document.querySelector(".saved-posters-grid");
 var customImageURL = document.querySelector('.poster-img-url');
 var showCustomPoster = document.querySelector('.make-poster');
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -134,7 +136,7 @@ showRandomButton.addEventListener('click', buildRandomPoster);
 
 showCustomPoster.addEventListener('click', buildCustomPoster);
 
-
+saveThisPosterButton.addEventListener("click", saveThisPoster);
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -154,6 +156,8 @@ function buildRandomPoster() {
   var randomImageIndex = getRandomIndex(images);
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
+
+  currentPoster = new Poster(imageSource, titleText, quoteText) 
 };
 
 function buildCustomPoster() {
@@ -167,14 +171,31 @@ function buildCustomPoster() {
   imageElement.src = customImage;
   quoteTextElement.innerHTML = customQuote;
 };
-
-
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
-};
+}
 
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
-};
+  
+  var markup = "";
+  for (var i = 0; i < savedPosters.length; i++) {
+    markup += `
+     <div class="mini-poster">
+       <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+       <h2>${savedPosters[i].title}</h2>
+       <h4>${savedPosters[i].quote}</h4>
+     </div>
+    `;
+  }  
+  savedPostersGrid.innerHTML = markup;
+}
+
+function saveThisPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster);
+    console.log(savedPosters);
+  }
+}
