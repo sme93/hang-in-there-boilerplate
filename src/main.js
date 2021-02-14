@@ -130,6 +130,8 @@ backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPost
 
 showRandomButton.addEventListener('click', buildRandomPoster);
 
+showCustomPoster.addEventListener('click', buildCustomPoster);
+
 
 
 // functions and event handlers go here 👇
