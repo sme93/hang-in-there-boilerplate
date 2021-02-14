@@ -16,6 +16,7 @@ var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
 var customImageURL = document.querySelector('.poster-img-url');
+var showCustomPoster = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -128,6 +129,8 @@ savedPostersButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 
 showRandomButton.addEventListener('click', buildRandomPoster);
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
