@@ -156,6 +156,19 @@ function buildRandomPoster() {
   imageElement.src = imageSource;
 };
 
+function buildCustomPoster() {
+  var customTitle = document.getElementById('poster-image-URL').value;
+  var customImage = customImageURL.value;
+  var customQuote = quoteTextElement.value;
+
+  customPoster = new Poster(customTitle, customImage, customQuote);
+
+  titleTextElement.innerHTML = customTitle;
+  imageElement.src = customImage;
+  quoteTextElement.innerHTML = customQuote;
+};
+
+
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
