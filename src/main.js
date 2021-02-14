@@ -120,6 +120,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', buildRandomPoster);
+
 makeYourOwnPosterButton.addEventListener("click", toggleMainPosterAndPosterForm);
 
 nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
@@ -157,22 +159,10 @@ function buildRandomPoster() {
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
-}
+};
 
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
-}
-
-var randomTitleIndex = getRandomIndex(titles);
-titleText = titles[randomTitleIndex];
-titleTextElement.innerHTML = titleText;
-
-var randomQuoteText = getRandomIndex(quotes);
-quoteText = quotes[randomQuoteText];
-quoteTextElement.innerHTML = quoteText;
-
-var randomImageIndex = getRandomIndex(images);
-imageSource = images[randomImageIndex];
-imageElement.src = imageSource;
+};
 
