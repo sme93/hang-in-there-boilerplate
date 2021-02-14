@@ -1,5 +1,6 @@
 // query selector variables go here 👇
 
+
 var titleText = "";
 var quoteText = "";
 var imageSource = "";
@@ -151,11 +152,7 @@ function buildRandomPoster() {
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
 
-  currentPoster = {
-    title: titleText,
-    quote: quoteText,
-    image: imageSource,
-  }
+  currentPoster = new Poster(imageSource, titleText, quoteText) 
 };
 
 function toggleMainPosterAndPosterForm() {
@@ -171,7 +168,7 @@ function toggleMainPosterAndSavedPosters() {
   for (var i = 0; i < savedPosters.length; i++) {
     markup += `
      <div class="mini-poster">
-       <img src=${savedPosters[i].image} alt="nothin' to see here">
+       <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
        <h2>${savedPosters[i].title}</h2>
        <h4>${savedPosters[i].quote}</h4>
      </div>
