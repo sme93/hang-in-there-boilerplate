@@ -194,23 +194,49 @@ function toggleMainPosterAndCustomPosterForm() {
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
   savedPostersElement.classList.toggle("hidden");
-  
-  var markup = "";
-  for (var i = 0; i < savedPosters.length; i++) {
-    markup += `
-     <div class="mini-poster">
-       <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
-       <h2>${savedPosters[i].title}</h2>
-       <h4>${savedPosters[i].quote}</h4>
-     </div>
-    `;
-  }  
-  savedPostersGrid.innerHTML = markup;
+  writeMiniPosters();
+  createListenersForMiniPosters();
 }
 
+function deletePoster(event) {
+  function findPosterbyId(poster) {
+    return `${poster.id}` === miniPosterId;
+  }
+
+  var miniPosterId = event.target.dataset.posterId;
+  var location = savedPosters.findIndex(findPosterbyId);
+
+  savedPosters.splice(location, 1);
+  writeMiniPosters();
+  createListenersForMiniPosters();
+}
+
+function writeMiniPosters() {
+  var markup = "";
+  
+  for (var i = 0; i < savedPosters.length; i++) {
+    markup += `
+     <div class="mini-poster" data-poster-id=${savedPosters[i].id}>
+       <img src=${savedPosters[i].imageURL} data-poster-id=${savedPosters[i].id} alt="nothin' to see here">
+       <h2 data-poster-id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
+       <h4 data-poster-id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
+     </div>
+    `;
+  }
+
+  savedPostersGrid.innerHTML = markup;
+}  
+
+function createListenersForMiniPosters() {
+  var miniPosterElements = document.querySelectorAll(".mini-poster")
+  
+  for (var miniposter of miniPosterElements) {
+    miniposter.addEventListener("dblclick", deletePoster)
+  }
+}
+ 
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-    console.log(savedPosters);
   }
 }
