@@ -152,8 +152,6 @@ function getRandomIndex(array) {
 
 function buildRandomPoster() {
 
-  currentPoster = new Poster (imageSource, titleText, quoteText)
-
   var randomTitleIndex = getRandomIndex(titles);
   titleText = titles[randomTitleIndex];
   titleTextElement.innerHTML = titleText;
@@ -166,6 +164,7 @@ function buildRandomPoster() {
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
 
+  currentPoster = new Poster (imageSource, titleText, quoteText)
 };
 
 function buildCustomPoster(event) {
