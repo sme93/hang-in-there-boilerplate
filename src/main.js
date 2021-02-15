@@ -18,12 +18,11 @@ var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
-var customImageURL = document.querySelector('.poster-img-url');
 var showCustomPoster = document.querySelector('.make-poster');
 
-var userQuote = document.querySelector("poster-quote");
+var userQuote = document.querySelector("#poster-quote");
 var userTitle = document.querySelector("#poster-title");
-var userImage = document.querySelector("#poster-image-URL");
+var userImage = document.querySelector("#poster-image-url");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -142,6 +141,9 @@ showCustomPoster.addEventListener('click', buildCustomPoster);
 
 saveThisPosterButton.addEventListener("click", saveThisPoster);
 
+
+
+
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -149,6 +151,7 @@ function getRandomIndex(array) {
 }
 
 function buildRandomPoster() {
+
   var randomTitleIndex = getRandomIndex(titles);
   titleText = titles[randomTitleIndex];
   titleTextElement.innerHTML = titleText;
@@ -164,21 +167,26 @@ function buildRandomPoster() {
   currentPoster = new Poster(imageSource, titleText, quoteText) 
 };
 
-function buildCustomPoster() {
-  var customTitle = document.getElementById('poster-image-URL').value;
-  var customImage = customImageURL.value;
-  var customQuote = quoteTextElement.value;
+function buildCustomPoster(event) {
+  event.preventDefault();
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
+  imageElement.src = currentPoster.imageURL;
+  titleTextElement.innerText = currentPoster.title;
+  quoteTextElement.innerText = currentPoster.quote;
 
-  customPoster = new Poster(customImage, customTitle, customQuote);
-
-  titleTextElement.innerHTML = customTitle;
-  imageElement.src = customImage;
-  quoteTextElement.innerHTML = customQuote;
+  toggleMainPosterAndCustomPosterForm();
 };
+
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
-}
+};
+
+
+function toggleMainPosterAndCustomPosterForm() {
+  mainPosterElement.classList.toggle("hidden");
+  posterFormElement.classList.toggle("hidden");
+};
 
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
