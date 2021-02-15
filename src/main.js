@@ -177,6 +177,7 @@ function buildCustomPoster(event) {
   quoteTextElement.innerText = currentPoster.quote;
 
   toggleMainPosterAndCustomPosterForm();
+
 };
 
 function toggleMainPosterAndPosterForm() {
