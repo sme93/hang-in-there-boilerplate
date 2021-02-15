@@ -13,10 +13,10 @@ var nevermindButton = document.querySelector(".show-main");
 var savedPostersButton = document.querySelector(".show-saved");
 var savedPostersElement = document.querySelector(".saved-posters");
 var backToMainFromSavedButton = document.querySelector(".back-to-main");
-var showRandomButton = document.querySelector('.show-random');
+var showRandomButton = document.querySelector(".show-random");
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
-var showCustomPoster = document.querySelector('.make-poster');
+var showCustomPoster = document.querySelector(".make-poster");
 var userQuote = document.querySelector("#poster-quote");
 var userTitle = document.querySelector("#poster-title");
 var userImage = document.querySelector("#poster-image-url");
@@ -123,8 +123,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', buildRandomPoster);
-showRandomButton.addEventListener('click', buildRandomPoster);
+window.addEventListener("load", buildRandomPoster);
+showRandomButton.addEventListener("click", buildRandomPoster);
 
 makeYourOwnPosterButton.addEventListener("click", toggleMainPosterAndPosterForm);
 nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
@@ -132,7 +132,7 @@ nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
 savedPostersButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPosters);
 
-showCustomPoster.addEventListener('click', buildCustomPoster);
+showCustomPoster.addEventListener("click", buildCustomPoster);
 
 saveThisPosterButton.addEventListener("click", saveThisPoster);
 
