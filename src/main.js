@@ -243,3 +243,9 @@ function saveThisPoster() {
     addQuotes();
   }
 };
+
+function addImages() {
+  if (!images.includes(currentPoster.imageURL)) {
+    images.push(currentPoster.imageURL);
+  }
+};
