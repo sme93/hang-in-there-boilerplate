@@ -256,3 +256,8 @@ function addTitles() {
   }
 };
 
+function addQuotes() {
+  if (!quotes.includes(currentPoster.quote)) {
+    quotes.push(currentPoster.quote);
+  }
+};
