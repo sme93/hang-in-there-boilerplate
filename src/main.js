@@ -249,3 +249,10 @@ function addImages() {
     images.push(currentPoster.imageURL);
   }
 };
+
+function addTitles() {
+  if (!titles.includes(currentPoster.title)) {
+    titles.push(currentPoster.title);
+  }
+};
+
