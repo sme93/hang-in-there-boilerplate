@@ -18,7 +18,11 @@ var backToMainFromSavedButton = document.querySelector(".back-to-main");
 var showRandomButton = document.querySelector('.show-random');
 var saveThisPosterButton = document.querySelector(".save-poster");
 var savedPostersGrid = document.querySelector(".saved-posters-grid");
+var showCustomPoster = document.querySelector('.make-poster');
 
+var userQuote = document.querySelector("#poster-quote");
+var userTitle = document.querySelector("#poster-title");
+var userImage = document.querySelector("#poster-image-url");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -121,6 +125,8 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+window.addEventListener('load', buildRandomPoster);
+
 makeYourOwnPosterButton.addEventListener("click", toggleMainPosterAndPosterForm);
 
 nevermindButton.addEventListener("click", toggleMainPosterAndPosterForm);
@@ -131,7 +137,12 @@ backToMainFromSavedButton.addEventListener("click", toggleMainPosterAndSavedPost
 
 showRandomButton.addEventListener('click', buildRandomPoster);
 
+showCustomPoster.addEventListener('click', buildCustomPoster);
+
 saveThisPosterButton.addEventListener("click", saveThisPoster);
+
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -140,6 +151,7 @@ function getRandomIndex(array) {
 }
 
 function buildRandomPoster() {
+
   var randomTitleIndex = getRandomIndex(titles);
   titleText = titles[randomTitleIndex];
   titleTextElement.innerHTML = titleText;
@@ -152,13 +164,32 @@ function buildRandomPoster() {
   imageSource = images[randomImageIndex];
   imageElement.src = imageSource;
 
-  currentPoster = new Poster(imageSource, titleText, quoteText) 
+  currentPoster = new Poster (imageSource, titleText, quoteText)
+};
+
+function buildCustomPoster(event) {
+  event.preventDefault();
+  
+  currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value);
+
+  imageElement.src = currentPoster.imageURL;
+  titleTextElement.innerText = currentPoster.title;
+  quoteTextElement.innerText = currentPoster.quote;
+
+  toggleMainPosterAndCustomPosterForm();
+
 };
 
 function toggleMainPosterAndPosterForm() {
   mainPosterElement.classList.toggle("hidden");
   posterFormElement.classList.toggle("hidden");
-}
+};
+
+
+function toggleMainPosterAndCustomPosterForm() {
+  mainPosterElement.classList.toggle("hidden");
+  posterFormElement.classList.toggle("hidden");
+};
 
 function toggleMainPosterAndSavedPosters() {
   mainPosterElement.classList.toggle("hidden");
@@ -183,8 +214,3 @@ function saveThisPoster() {
     console.log(savedPosters);
   }
 }
-
-buildRandomPoster(); 
-
-
-
