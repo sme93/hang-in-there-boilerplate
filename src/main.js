@@ -176,6 +176,9 @@ function buildCustomPoster(event) {
   titleTextElement.innerText = currentPoster.title;
   quoteTextElement.innerText = currentPoster.quote;
 
+  addImages();
+  addTitles();
+  addQuotes();
   toggleMainPosterAndCustomPosterForm();
 
 };
@@ -233,10 +236,28 @@ function createListenersForMiniPosters() {
   for (var miniposter of miniPosterElements) {
     miniposter.addEventListener("dblclick", deletePoster)
   }
-}
+};
  
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
-}
+};
+
+function addImages() {
+  if (!images.includes(currentPoster.imageURL)) {
+    images.push(currentPoster.imageURL);
+  }
+};
+
+function addTitles() {
+  if (!titles.includes(currentPoster.title)) {
+    titles.push(currentPoster.title);
+  }
+};
+
+function addQuotes() {
+  if (!quotes.includes(currentPoster.quote)) {
+    quotes.push(currentPoster.quote);
+  }
+};
