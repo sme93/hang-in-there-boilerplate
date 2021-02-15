@@ -233,10 +233,13 @@ function createListenersForMiniPosters() {
   for (var miniposter of miniPosterElements) {
     miniposter.addEventListener("dblclick", deletePoster)
   }
-}
+};
  
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
+    addImages();
+    addTitles();
+    addQuotes();
   }
-}
+};
