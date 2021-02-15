@@ -176,6 +176,9 @@ function buildCustomPoster(event) {
   titleTextElement.innerText = currentPoster.title;
   quoteTextElement.innerText = currentPoster.quote;
 
+  addImages();
+  addTitles();
+  addQuotes();
   toggleMainPosterAndCustomPosterForm();
 
 };
@@ -238,9 +241,6 @@ function createListenersForMiniPosters() {
 function saveThisPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
-    addImages();
-    addTitles();
-    addQuotes();
   }
 };
 
