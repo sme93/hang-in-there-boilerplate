@@ -209,7 +209,7 @@ function writeMiniPosters() {
   for (var i = 0; i < savedPosters.length; i++) {
     markup += `
      <div class="mini-poster" data-poster-id=${savedPosters[i].id}>
-       <img src=${savedPosters[i].imageURL} data-poster-id=${savedPosters[i].id} alt="nothin' to see here">
+       <img src=${savedPosters[i].imageURL} data-poster-id=${savedPosters[i].id} alt=${savedPosters[i].title}>
        <h2 data-poster-id=${savedPosters[i].id}>${savedPosters[i].title}</h2>
        <h4 data-poster-id=${savedPosters[i].id}>${savedPosters[i].quote}</h4>
      </div>
